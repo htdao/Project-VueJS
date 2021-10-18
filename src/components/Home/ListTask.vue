@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="container">
     List task
   </div>
 </template>
@@ -10,6 +10,9 @@ export default {
 }
 </script>
 
-<style scoped>
-
+<style scoped lang="scss">
+.container{
+  float: left;
+  width: 700px;
+}
 </style>

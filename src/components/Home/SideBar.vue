@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="container">
     sidebar
   </div>
 </template>
@@ -10,6 +10,10 @@ export default {
 }
 </script>
 
-<style scoped>
-
+<style scoped lang="scss">
+.container{
+  background-color: gray;
+  height: 700px;
+  width: 200px;
+}
 </style>
