@@ -32,9 +32,6 @@
         </el-dropdown>
       </el-col>
     </el-row>
-<!--    <el-row class="content">-->
-<!--      <router-view></router-view>-->
-<!--    </el-row>-->
     <el-dialog
         title="Thêm thẻ"
         :visible.sync="dialogAddTag"
