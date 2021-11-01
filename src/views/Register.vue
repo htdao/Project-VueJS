@@ -32,12 +32,19 @@ export default {
 
 <style scoped lang="scss">
 .content{
+  background-image: url("../assets/background-login.jpg");
+  height:100%;
+  width:100%;
+  position:absolute;
+  top:0;
+  left:0;
+  overflow:hidden;
+
   .main{
-    margin: 0 auto;
-    background: #f5f5f5;
-    border: 1px solid #6E6E6E;
+    margin: 200px auto;
+    background: white;
     padding: 24px;
-    height: 250px;
+    height: 300px;
     width: 300px;
 
     .inputWrap {
