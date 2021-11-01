@@ -3,7 +3,7 @@
     <LoginLayout/>
     <div class="main">
       <div>
-        <h3>Đăng nhập</h3>
+        <h2 class="title">Đăng nhập</h2>
       </div>
       <div class="inputWrap">
         <div class="inputLabel">Tên đăng nhập</div>
@@ -14,7 +14,9 @@
         <input type="password">
       </div>
       <p @click="onRegister">Đăng ký tài khoản</p>
-      <button class="loginButton" @click="onHomePage">Đăng nhập</button>
+      <el-row>
+        <button class="loginButton el-button el-button--primary el-button--mini is-plain" @click="onHomePage">Đăng nhập</button>
+      </el-row>
     </div>
   </div>
 </template>
@@ -39,13 +41,24 @@ export default {
 
 <style scoped lang="scss">
 .content{
+  background-image: url("../assets/anh-nen.jpg");
+  height:100%;
+  width:100%;
+  position:absolute;
+  top:0;
+  left:0;
+  overflow:hidden;
+
   .main{
-    margin: 0 auto;
-    background: #f5f5f5;
-    border: 1px solid #6E6E6E;
+    margin: 200px auto;
+    background: white;
     padding: 24px;
-    height: 250px;
+    height: 300px;
     width: 300px;
+
+    .title{
+      color: #0080dd;
+    }
 
     .inputWrap {
       margin-bottom: 12px;
