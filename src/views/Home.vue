@@ -12,8 +12,8 @@
             <el-dropdown class="menu">
               <i class="el-icon-more"></i>
               <el-dropdown-menu slot="dropdown" class="dropdown">
-                <el-dropdown-item divided>
-                  <i class="el-icon-s-order"></i> Chi tiết
+                <el-dropdown-item divided @click.native="dialogAddTag=true">
+                  <i class="el-icon-plus"></i> Thêm thẻ
                 </el-dropdown-item>
                 <el-dropdown-item divided @click.native="deleteTag">
                   <i class="el-icon-delete"></i> Xoá
@@ -29,7 +29,7 @@
               <el-dropdown class="drop-down">
                 <i class="el-icon-edit"></i>
                 <el-dropdown-menu slot="dropdown" class="dropdown">
-                  <el-dropdown-item divided>
+                  <el-dropdown-item divided @click.native="dialogDetailTag=true">
                     <i class="el-icon-s-order"></i> Chi tiết
                   </el-dropdown-item>
                   <el-dropdown-item divided @click.native="deleteTag">
@@ -52,7 +52,7 @@
               <el-dropdown class="drop-down">
                 <i class="el-icon-edit"></i>
                 <el-dropdown-menu slot="dropdown" class="dropdown">
-                  <el-dropdown-item divided>
+                  <el-dropdown-item divided @click.native="dialogDetailTag=true">
                     <i class="el-icon-s-order"></i> Chi tiết
                   </el-dropdown-item>
                   <el-dropdown-item divided @click.native="deleteTag">
@@ -78,8 +78,8 @@
             <el-dropdown class="menu">
               <i class="el-icon-more"></i>
               <el-dropdown-menu slot="dropdown" class="dropdown">
-                <el-dropdown-item divided>
-                  <i class="el-icon-s-order"></i> Chi tiết
+                <el-dropdown-item divided @click.native="dialogAddTag=true">
+                  <i class="el-icon-plus"></i> Thêm thẻ
                 </el-dropdown-item>
                 <el-dropdown-item divided @click.native="deleteTag">
                   <i class="el-icon-delete"></i> Xoá
@@ -95,7 +95,7 @@
             <el-dropdown class="drop-down">
               <i class="el-icon-edit"></i>
               <el-dropdown-menu slot="dropdown" class="dropdown">
-                <el-dropdown-item divided>
+                <el-dropdown-item divided @click.native="dialogDetailTag=true">
                   <i class="el-icon-s-order"></i> Chi tiết
                 </el-dropdown-item>
                 <el-dropdown-item divided @click.native="deleteTag">
@@ -119,7 +119,7 @@
             <el-dropdown class="drop-down">
               <i class="el-icon-edit"></i>
               <el-dropdown-menu slot="dropdown" class="dropdown">
-                <el-dropdown-item divided>
+                <el-dropdown-item divided @click.native="dialogDetailTag=true">
                   <i class="el-icon-s-order"></i> Chi tiết
                 </el-dropdown-item>
                 <el-dropdown-item divided @click.native="deleteTag">
@@ -143,7 +143,7 @@
             <el-dropdown class="drop-down">
               <i class="el-icon-edit"></i>
               <el-dropdown-menu slot="dropdown" class="dropdown">
-                <el-dropdown-item divided>
+                <el-dropdown-item divided @click.native="dialogDetailTag=true">
                   <i class="el-icon-s-order"></i> Chi tiết
                 </el-dropdown-item>
                 <el-dropdown-item divided @click.native="deleteTag">
@@ -169,8 +169,8 @@
             <el-dropdown class="menu">
               <i class="el-icon-more"></i>
               <el-dropdown-menu slot="dropdown" class="dropdown">
-                <el-dropdown-item divided>
-                  <i class="el-icon-s-order"></i> Chi tiết
+                <el-dropdown-item divided @click.native="dialogAddTag=true">
+                  <i class="el-icon-plus"></i> Thêm thẻ
                 </el-dropdown-item>
                 <el-dropdown-item divided @click.native="deleteTag">
                   <i class="el-icon-delete"></i> Xoá
@@ -186,7 +186,7 @@
               <el-dropdown class="drop-down">
                 <i class="el-icon-edit"></i>
                 <el-dropdown-menu slot="dropdown" class="dropdown">
-                  <el-dropdown-item divided>
+                  <el-dropdown-item divided @click.native="dialogDetailTag=true">
                     <i class="el-icon-s-order"></i> Chi tiết
                   </el-dropdown-item>
                   <el-dropdown-item divided @click.native="deleteTag">
@@ -211,7 +211,7 @@
                 <i class="el-icon-edit"></i>
                 <el-dropdown-menu slot="dropdown" class="dropdown">
                   <el-dropdown-item divided>
-                    <i class="el-icon-s-order"></i> Chi tiết
+                    <i class="el-icon-s-order" @click.native="dialogDetailTag=true"></i> Chi tiết
                   </el-dropdown-item>
                   <el-dropdown-item divided @click.native="deleteTag">
                     <i class="el-icon-delete"></i> Xoá
@@ -234,7 +234,7 @@
               <el-dropdown class="drop-down">
                 <i class="el-icon-edit"></i>
                 <el-dropdown-menu slot="dropdown" class="dropdown">
-                  <el-dropdown-item divided>
+                  <el-dropdown-item divided @click.native="dialogDetailTag=true">
                     <i class="el-icon-s-order"></i> Chi tiết
                   </el-dropdown-item>
                   <el-dropdown-item divided @click.native="deleteTag">
@@ -255,6 +255,105 @@
         </div>
       </el-row>
     </div>
+    <el-dialog
+        title="Thêm thẻ"
+        :visible.sync="dialogAddTag"
+        width="30%">
+      <div class="inputWarp">
+        <label>Tiêu đề thẻ <span class="required">*</span></label>
+        <el-input type="text" v-model="titleTag"></el-input>
+      </div>
+      <span slot="footer" class="dialog-footer">
+      <el-button @click="dialogAddTag = false">Huỷ</el-button>
+      <el-button type="primary" @click="dialogAddTag = false">Thêm mới</el-button>
+    </span>
+    </el-dialog>
+    <el-dialog
+        title="Todo"
+        :visible.sync="dialogDetailTag"
+        width="60%"
+        center>
+      <el-row>
+        <el-col :span="18">
+          <div class="grid-content bg-purple">
+            <div class="inputWarp">
+              <label>Nhãn</label>
+            </div>
+            <div class="inputWarp">
+              <label>Mô tả</label>
+            </div>
+            <div class="inputWarp">
+              <label>Tệp đính kèm</label>
+            </div>
+            <div class="inputWarp">
+              <label>Việc cần làm</label>
+            </div>
+          </div>
+        </el-col>
+        <el-col :span="6">
+          <div class="grid-content bg-purple-light">
+            <el-menu>
+              <el-menu-item index="1" @click="dialogTag=true">
+                <i class="el-icon-menu"></i>
+                <span>Nhãn</span>
+              </el-menu-item>
+              <el-menu-item index="2" @click="dialogWork=true">
+                <i class="el-icon-menu"></i>
+                <span>Việc cần làm</span>
+              </el-menu-item>
+              <el-menu-item index="3" @click="dialogDeadline=true">
+                <i class="el-icon-document"></i>
+                <span>Ngày</span>
+              </el-menu-item>
+              <el-menu-item index="4" @click="dialogFile=true">
+                <i class="el-icon-setting"></i>
+                <span>Đính kèm</span>
+              </el-menu-item>
+            </el-menu>
+          </div>
+        </el-col>
+      </el-row>
+      <span slot="footer" class="dialog-footer">
+        <el-button @click="dialogDetailTag = false">Huỷ</el-button>
+        <el-button type="primary" @click="dialogDetailTag = false">Xác nhận</el-button>
+      </span>
+    </el-dialog>
+    <el-dialog
+        title="Nhãn"
+        :visible.sync="dialogTag"
+        width="30%">
+      <span slot="footer" class="dialog-footer">
+      <el-button @click="dialogTag = false">Huỷ</el-button>
+      <el-button type="primary" @click="dialogTag = false">Xác nhận</el-button>
+    </span>
+    </el-dialog>
+    <el-dialog
+        title="Việc cần làm"
+        :visible.sync="dialogWork"
+        width="30%">
+      <span slot="footer" class="dialog-footer">
+      <el-button @click="dialogWork = false">Huỷ</el-button>
+      <el-button type="primary" @click="dialogWork = false">Xác nhận</el-button>
+    </span>
+    </el-dialog>
+    <el-dialog
+        title="Ngày hết hạn"
+        :visible.sync="dialogDeadline"
+        width="30%">
+      <span slot="footer" class="dialog-footer">
+      <el-button @click="dialogDeadline = false">Huỷ</el-button>
+      <el-button type="primary" @click="dialogDeadline = false">Xác nhận</el-button>
+    </span>
+    </el-dialog>
+    <el-dialog
+        title="Tệp đính kèm"
+        :visible.sync="dialogFile"
+        width="30%">
+      <span slot="footer" class="dialog-footer">
+      <el-button @click="dialogFile = false">Huỷ</el-button>
+      <el-button type="primary" @click="dialogFile = false">Xác nhận</el-button>
+    </span>
+    </el-dialog>
   </div>
 </template>
 <script>
@@ -267,7 +366,13 @@ export default {
   data(){
     return{
       checked: false,
-
+      titleTag: '',
+      dialogAddTag: false,
+      dialogDetailTag: false,
+      dialogFile: false,
+      dialogDeadline: false,
+      dialogTag: false,
+      dialogWork: false,
     }
   },
   methods:{
@@ -469,5 +574,8 @@ export default {
       }
     }
   }
+}
+.inputWarp{
+  margin: 20px 0;
 }
 </style>

@@ -25,6 +25,9 @@
             <el-dropdown-item divided @click.native="onUserPage">
               Thông tin tài khoản
             </el-dropdown-item>
+            <el-dropdown-item divided @click.native="dialogChangePassword = true">
+              Đổi mật khẩu
+            </el-dropdown-item>
             <el-dropdown-item divided @click.native="logout">
               Đăng xuất
             </el-dropdown-item>
@@ -46,6 +49,29 @@
       <el-button type="primary" @click="dialogAddTag = false">Thêm mới</el-button>
     </span>
     </el-dialog>
+    <el-dialog
+        title="Đổi mật khẩu"
+        :visible.sync="dialogChangePassword"
+        width="30%"
+        center>
+      <div class="inputWarp">
+        <label>Mật khẩu cũ<span class="required">*</span></label>
+        <el-input type="password"></el-input>
+      </div>
+      <div class="inputWarp">
+        <label>Mật khẩu mới<span class="required">*</span></label>
+        <el-input type="password"></el-input>
+      </div>
+      <div class="inputWarp">
+        <label>Nhập lại mật khẩu<span class="required">*</span></label>
+        <el-input type="password"></el-input>
+      </div>
+      <span slot="footer" class="dialog-footer">
+        <el-button @click="dialogChangePassword = false">Huỷ</el-button>
+        <el-button type="primary" @click="dialogChangePassword = false">Xác nhận</el-button>
+      </span>
+    </el-dialog>
+
   </el-row>
 </template>
 
@@ -58,7 +84,8 @@ export default {
   data(){
     return{
       dialogAddTag: false,
-      titleTag: ''
+      titleTag: '',
+      dialogChangePassword: false
     }
   },
   methods:{
@@ -113,5 +140,8 @@ export default {
 }
 .required{
   color: red;
+}
+.inputWarp{
+  margin: 10px 0;
 }
 </style>
