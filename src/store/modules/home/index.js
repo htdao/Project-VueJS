@@ -1,7 +1,6 @@
 export default {
     namespaced: true,
     state: {
-
         // Khai báo state
     },
     getters: {

@@ -28,7 +28,7 @@
             <el-dropdown-item divided @click.native="dialogChangePassword = true">
               Đổi mật khẩu
             </el-dropdown-item>
-            <el-dropdown-item divided @click.native="logout">
+            <el-dropdown-item divided @click.native="handleLogout">
               Đăng xuất
             </el-dropdown-item>
           </el-dropdown-menu>
@@ -76,6 +76,9 @@
 </template>
 
 <script>
+import api from "../api";
+import {mapMutations} from "vuex";
+
 export default {
   name: 'AdminLayout',
   components: {
@@ -89,11 +92,30 @@ export default {
     }
   },
   methods:{
+    ...mapMutations('auth', [
+      'updateLoginStatus',
+      'updateAuthUser',
+      'updateAccessToken'
+    ]),
     onUserPage(){
       this.$router.push({ name: 'User'})
     },
     logout(){
-      this.$router.push({ name: 'Login'})
+
+      this.$router.push({ path: '/login'})
+    },
+    handleLogout(){
+      api.logout().then(() => {
+        this.updateAccessToken('');
+        this.updateAuthUser({})
+        this.updateLoginStatus(false)
+        this.$router.push({ path: '/login'})
+        this.$message({
+          showClose: true,
+          message: 'Đăng xuất thành công',
+          type: 'success'
+        });
+      })
     },
     onHomePage(){
       this.$router.push({ name: 'Home'})
