@@ -373,6 +373,7 @@ export default {
       dialogDeadline: false,
       dialogTag: false,
       dialogWork: false,
+
     }
   },
   methods:{

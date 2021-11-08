@@ -6,25 +6,50 @@
         <h3>Đăng Ký</h3>
       </div>
       <div class="inputWrap">
+        <div class="inputLabel">Họ tên</div>
+        <input type="text" v-model="name">
+      </div>
+      <div class="inputWrap">
         <div class="inputLabel">Email</div>
-        <input type="text">
+        <input type="text" v-model="email">
       </div>
       <div class="inputWrap">
         <div class="inputLabel">Mật khẩu</div>
-        <input type="password">
+        <input type="password" v-model="password">
       </div>
       <p @click="onLogin">Đăng nhập</p>
-      <button class="loginButton">Đăng ký</button>
+      <button class="loginButton" @click="handleRegister">Đăng ký</button>
     </div>
   </div>
 </template>
 
 <script>
+import api from '../api'
 export default {
   name: "Register",
+  data(){
+    return{
+      email: '',
+      name: '',
+      password: '',
+    }
+  },
   methods:{
     onLogin(){
       this.$router.push({ name: 'Login'})
+    },
+    handleRegister(){
+      api.register({
+        name: this.name,
+        email: this.email,
+        password: this.password
+      }).then(() => {
+        this.$message({
+          showClose: true,
+          message: 'Đăng ký thành công',
+          type: 'success'
+        });
+      })
     }
   }
 }
@@ -44,7 +69,7 @@ export default {
     margin: 200px auto;
     background: white;
     padding: 24px;
-    height: 300px;
+    height: 400px;
     width: 300px;
 
     .inputWrap {

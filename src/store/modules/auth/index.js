@@ -1,12 +1,19 @@
 export default {
     namespaced: true,
     state: {
-        // Khai báo state
-    },
-    getters: {
-        // Khai báo getters
+        isAuthenticated: false,
+        authUser: {},
+        accessToken: '',
     },
     mutations: {
-        // Khai báo mutations
+        updateLoginStatus(state, isAuthenticated) {
+            state.isAuthenticated = isAuthenticated
+        },
+        updateAuthUser(state, authUser) {
+            state.authUser = authUser
+        },
+        updateAccessToken(state, token) {
+            state.accessToken = token
+        },
     },
 }
