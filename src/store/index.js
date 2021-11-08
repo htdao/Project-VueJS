@@ -20,7 +20,7 @@ const store = new Vuex.Store({
 })
 
 router.beforeEach((to, from, next) => {
-    if (to.name !== 'Login' && !store.state.auth.isAuthenticated) {
+    if (to.name !== 'Login' && !store.state.auth.isAuthenticated && to.name !== 'Register') {
         next({ name: 'Login'})
     } else if(to.name === 'Login' && store.state.auth.isAuthenticated) {
         next({ name: 'Home' })
